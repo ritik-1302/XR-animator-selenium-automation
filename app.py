@@ -6,7 +6,7 @@ import math
 import cv2
 
 from flask import Flask
-from flask import request,send_from_directory
+from flask import request,send_from_directory,jsonify
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -124,6 +124,10 @@ def vrm_animator():
         time.sleep(5)
         for filename in os.listdir(os.path.join(os.getcwd(), app.config['DOWNLOAD_FOLDER'])):
             return send_from_directory(os.path.join(os.getcwd(), app.config['DOWNLOAD_FOLDER']), filename)
+        
+        
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
     finally:
         
