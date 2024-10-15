@@ -23,6 +23,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
 
+@app.route('/',methods=['GET'])
+def index():
+    return 'Hello, World!'
+
 
 @app.route('/vrm_animator', methods=['POST'])
 def vrm_animator():
